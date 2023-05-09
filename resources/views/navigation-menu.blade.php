@@ -73,6 +73,11 @@
                     </div>
                 @endif
 
+                <div class="ml-3 relative">
+                    <x-theme-button>
+                    </x-theme-button>
+                </div>
+
                 <!-- Settings Dropdown -->
                 <div class="ml-3 relative">
                     <x-dropdown align="right" width="48">
@@ -114,11 +119,6 @@
                                     {{ __('API Tokens') }}
                                 </x-dropdown-link>
                             @endif
-
-                            <!-- Color Theme Button -->
-                            <x-dropdown-link>
-                                <x-theme-button></x-theme-button>
-                            </x-dropdown-link>
 
                             <div class="border-t border-gray-200 dark:border-gray-600"></div>
 
