@@ -78,7 +78,27 @@
                 </div>
 
                 <div class="ml-3 relative">
-                    {{-- TODO: Inster language button prueba --}}
+                    <x-dropdown>
+                        <x-slot name="trigger">
+                            <span class="inline-flex rounded-md">
+
+                                <button type="button"
+                                    class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 dark:text-gray-400 bg-white dark:bg-gray-800 hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none focus:bg-gray-50 dark:focus:bg-gray-700 active:bg-gray-50 dark:active:bg-gray-700 transition ease-in-out duration-150">
+                                    {{ __('Language') }}
+                                </button>
+                            </span>
+                        </x-slot>
+                        <x-slot name="content">
+                            <x-dropdown-link class="inline-flex items-center" href="/set_language/es">
+                                <span class="fi fi-es mr-3"></span>
+                                <p> {{ __('Spanish') }}</p>
+                            </x-dropdown-link>
+                            <x-dropdown-link class="inline-flex items-center" href="/set_language/en">
+                                <span class="fi fi-us mr-3"></span>
+                                <p> {{ __('English') }}</p>
+                            </x-dropdown-link>
+                        </x-slot>
+                    </x-dropdown>
                 </div>
 
                 <!-- Settings Dropdown -->
