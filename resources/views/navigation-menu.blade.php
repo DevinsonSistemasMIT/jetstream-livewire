@@ -76,8 +76,9 @@
                 <div class="ml-3 relative">
                     <x-theme-button></x-theme-button>
                 </div>
+
                 <div class="ml-3 relative">
-                {{-- TODO: Inster language button --}}
+                    {{-- TODO: Inster language button prueba --}}
                 </div>
 
                 <!-- Settings Dropdown -->
