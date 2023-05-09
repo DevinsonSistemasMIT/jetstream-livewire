@@ -74,8 +74,7 @@
                 @endif
 
                 <div class="ml-3 relative">
-                    <x-theme-button>
-                    </x-theme-button>
+                    <x-theme-button></x-theme-button>
                 </div>
 
                 <!-- Settings Dropdown -->
