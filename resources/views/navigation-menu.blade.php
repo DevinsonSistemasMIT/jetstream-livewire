@@ -74,7 +74,9 @@
                 @endif
 
                 <div class="ml-3 relative">
-                    <x-theme-button></x-theme-button>
+                    <x-toggle-theme>
+                        <x-button>{{ __('Theme') }}</x-button>
+                    </x-toggle-theme>
                 </div>
 
                 <div class="ml-3 relative">
