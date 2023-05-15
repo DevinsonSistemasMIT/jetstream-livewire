@@ -1,54 +1,29 @@
-<div>
-    @foreach ($families->where('parent_id', null) as $grandfather)
-        <x-tree-dropdown>
-            <x-slot name="title">
-                <p>{{ $grandfather->title }}</p>
-                <br>
-            </x-slot>
+<div class="bg-white rounded shadow p-3">
+    @foreach ($data->children as $root)
+        <div class="bg-gray-100 shadow-lg rounded p-3 m-3" x-data="{ open: false }">
+            <x-button x-on:click="open = ! open">
+                {{ $root->name }}
+            </x-button>
 
-            <x-slot name="content">
-                @foreach ($families->where('parent_id', $grandfather->id) as $superFather)
-                    <x-tree-dropdown>
-                        <x-slot name="title">
-                            <p>{{ $superFather->title }}</p>
-                        </x-slot>
+            <div x-show="open">
+                @foreach ($root->children as $parent)
+                    <div class="bg-gray-100 shadow-lg rounded p-3 m-3" x-data="{ open: false }">
+                        <x-button x-on:click="open = ! open">
+                            {{ $parent->name }}
+                        </x-button>
 
-                        <x-slot name="content">
-                            @foreach ($families->where('parent_id', $superFather->id) as $father)
-                                <x-tree-dropdown>
-                                    <x-slot name="title">
-                                        <p>{{ $father->title }}</p>
-                                    </x-slot>
-
-                                    <x-slot name="content">
-                                        @foreach ($families->where('parent_id', $father->id) as $son)
-                                            <x-tree-dropdown>
-                                                <x-slot name="title">
-                                                    <p>{{ $son->title }}</p>
-                                                </x-slot>
-
-                                                <x-slot name="content">
-                                                    @foreach ($families->where('parent_id', $son->id) as $grandson)
-                                                        <x-tree-dropdown>
-                                                            <x-slot name="title">
-                                                                <p>{{ $grandson->title }}</p>
-                                                            </x-slot>
-
-                                                            <x-slot name="content">
-                                                                grandsons...
-                                                            </x-slot>
-                                                        </x-tree-dropdown>
-                                                    @endforeach
-                                                </x-slot>
-                                            </x-tree-view>
-                                        @endforeach
-                                    </x-slot>
-                                </x-tree-view>
+                        <div x-show="open">
+                            @foreach ($parent->children as $child)
+                                <div class="bg-gray-100 shadow-lg rounded p-3 m-3" x-data="{ open: false }">
+                                    <x-button x-on:click="open = ! open">
+                                        {{ $child->name }}
+                                    </x-button>
+                                </div>
                             @endforeach
-                        </x-slot>
-                    </x-tree-view>
+                        </div>
+                    </div>
                 @endforeach
-            </x-slot>
-        </x-tree-view>
+            </div>
+        </div>
     @endforeach
 </div>

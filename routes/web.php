@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Livewire\TreeView;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -28,3 +29,5 @@ Route::middleware([
 });
 
 Route::get('/set_language/{lang}', [App\Http\Controllers\Controller::class, 'set_language'])->name('set_language');
+
+Route::get('/families', [TreeView::class, 'render']);

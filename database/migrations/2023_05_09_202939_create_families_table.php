@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('families', function (Blueprint $table) {
             $table->id();
-            $table->string('title')->nullable();
-            $table->foreignId('parent_id')->nullable();
+            $table->string('name')->nullable();
+            $table->foreignId('parent_id')->nullable()->default(null);
             $table->foreign('parent_id')->references('id')->on('families')->cascadeOnDelete();
             $table->timestamps();
         });
