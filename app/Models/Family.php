@@ -8,4 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class Family extends Model
 {
     use HasFactory;
+
+    public function parents()
+    {
+        return $this->hasMany(Family::class, 'parent_id');
+    }
+
+    public function children()
+    {
+        return $this->hasMany(Family::class, 'parent_id')->with('parents');
+    }
 }

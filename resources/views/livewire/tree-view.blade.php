@@ -1,29 +1,15 @@
 <div class="bg-white rounded shadow p-3">
-    @foreach ($data->children as $root)
-        <div class="bg-gray-100 shadow-lg rounded p-3 m-3" x-data="{ open: false }">
-            <x-button x-on:click="open = ! open">
-                {{ $root->name }}
+    <div class="bg-slate-100 shadow-md p-3 m-3 border border-indigo-500 shadow-indigo-500" x-data="{ open: false }">
+        @foreach ($families as $family)
+            <x-button @click="open = ! open">
+                {{ $family->name }}
             </x-button>
 
             <div x-show="open">
-                @foreach ($root->children as $parent)
-                    <div class="bg-gray-100 shadow-lg rounded p-3 m-3" x-data="{ open: false }">
-                        <x-button x-on:click="open = ! open">
-                            {{ $parent->name }}
-                        </x-button>
-
-                        <div x-show="open">
-                            @foreach ($parent->children as $child)
-                                <div class="bg-gray-100 shadow-lg rounded p-3 m-3" x-data="{ open: false }">
-                                    <x-button x-on:click="open = ! open">
-                                        {{ $child->name }}
-                                    </x-button>
-                                </div>
-                            @endforeach
-                        </div>
-                    </div>
+                @foreach ($family->children as $children)
+                    @include('components.recursive', ['children' => $children])
                 @endforeach
             </div>
-        </div>
-    @endforeach
+        @endforeach
+    </div>
 </div>
