@@ -7,10 +7,15 @@ use Livewire\Component;
 
 class TreeView extends Component
 {
+    public $families;
+
+    public function mount()
+    {
+        $this->families = Family::whereNull('parent_id')->with('children')->get();
+    }
+
     public function render()
     {
-        $families = Family::whereNull('parent_id')->with('children')->get();
-
-        return view('livewire.tree-view', compact('families'));
+        return view('livewire.tree-view');
     }
 }
